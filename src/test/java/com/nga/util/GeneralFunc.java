@@ -38,6 +38,7 @@ public class GeneralFunc {
 		try {
 			driver.findElement(element);
 		} catch (NoSuchElementException e) {
+			System.out.println("The status of the element "+element+" is "+status);
 			status = false;
 		}
 		return status;		
@@ -46,12 +47,13 @@ public class GeneralFunc {
 	public static boolean waitForElementPresent(By element){
 		try{
 			new WebDriverWait(driver, delay180).until(ExpectedConditions.presenceOfElementLocated(element));
-			return true;
+			return status;
 		}
-		catch(Exception e){
-			e.printStackTrace();
+		catch(NoSuchElementException e){
+			status = false;
+			System.out.println("The status of the element "+element+" is "+status);
 		}
-		return false;
+		return status;
 	}
 	
 	public static boolean closeBrowser(){
@@ -80,7 +82,7 @@ public class GeneralFunc {
 			return status;
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			System.out.println("The status of the element "+element+" is "+status);
 			status = false;
 		}
 		return status;
@@ -95,7 +97,7 @@ public class GeneralFunc {
 			}
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			System.out.println("The status of the element "+element+" is "+status);
 			status = false;
 		}
 		return status;
@@ -105,6 +107,7 @@ public class GeneralFunc {
 			new WebDriverWait(driver, delay180).until(ExpectedConditions.visibilityOfElementLocated(element));
 		}
 		catch(NoSuchElementException e){
+			System.out.println("The status of the element "+element+" is "+status);
 			status = false;
 		}
 		return status;
