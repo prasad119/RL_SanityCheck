@@ -1,15 +1,21 @@
 package com.resourcelink.Resourcelink;
 public class App{ 
-public static enum Pra{
-	TEXTBOX{
-		public String userName_TextBox(){
-			String x = "ARB";
-			return x;
+	static int i = 0;
+	public static void d(){
+		i++;
+		if(i<=10){
+			System.out.println("p");
+			if(i == 2){
+				i = 0;
+			}
+			d();
 		}
 	}
-}
-    public static void main( String[] args )
-    {
-//       System.out.println(Pra.TEXTBOX.values().);
-    }
+	public static void main( String[] args )
+	{
+		d();
+	}
+	
+	
+
 }
